@@ -68,15 +68,15 @@ function EditarPerfilContenido() {
   // --- Logros ---
   function agregarLogro() {
     const nuevo: Logro = { id: uuid(), titulo: "", tipo: "Reconocimiento", anio: "" };
-    actualizar("logros", [...perfil.logros, nuevo]);
+    actualizar("logros", [...perfil!.logros, nuevo]);
   }
   function actualizarLogro(idx: number, campo: keyof Logro, valor: string) {
-    const copia = [...perfil.logros];
+    const copia = [...perfil!.logros];
     copia[idx] = { ...copia[idx], [campo]: valor } as Logro;
     actualizar("logros", copia);
   }
   function quitarLogro(idx: number) {
-    actualizar("logros", perfil.logros.filter((_, i) => i !== idx));
+    actualizar("logros", perfil!.logros.filter((_, i) => i !== idx));
   }
 
   // --- Experiencia ---
@@ -217,8 +217,8 @@ function EditarPerfilContenido() {
             <h2 className="font-display text-2xl">Logros</h2>
             <button type="button" onClick={agregarLogro} className="text-sm text-turf underline">+ Agregar logro</button>
           </div>
-          {perfil.logros.length === 0 && <p className="text-sm text-steel">Aún no agregas logros.</p>}
-          {perfil.logros.map((logro, idx) => (
+          {perfil!.logros.length === 0 && <p className="text-sm text-steel">Aún no agregas logros.</p>}
+          {perfil!.logros.map((logro, idx) => (
             <div key={logro.id} className="border border-black/10 p-4 space-y-3">
               <div className="grid sm:grid-cols-3 gap-3">
                 <Campo label="Título" value={logro.titulo} onChange={(v) => actualizarLogro(idx, "titulo", v)} />
