@@ -54,10 +54,10 @@ function EditarPerfilContenido() {
 
   // --- Estadísticas ---
   function agregarEstadistica() {
-    actualizar("estadisticas", [...perfil.estadisticas, { temporada: "" }]);
+    actualizar("estadisticas", [...perfil!.estadisticas, { temporada: "" }]);
   }
   function actualizarEstadistica(idx: number, campo: keyof Estadisticas, valor: string) {
-    const copia = [...perfil.estadisticas];
+    const copia = [...perfil!.estadisticas];
     copia[idx] = { ...copia[idx], [campo]: campo === "temporada" || campo === "otros" ? valor : Number(valor) || undefined };
     actualizar("estadisticas", copia);
   }
