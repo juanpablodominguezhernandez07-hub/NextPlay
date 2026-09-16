@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Barlow Condensed", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+body {
+  background-color: #F6F4EF;
+  color: #1C1F24;
+}
+
+.scoreboard-rule {
+  border-top: 3px solid #C9A24B;
+}
+
+.field-lines {
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.06) 0px,
+    rgba(255, 255, 255, 0.06) 1px,
+    transparent 1px,
+    transparent 80px
+  );
+}
+
+::selection {
+  background-color: #C9A24B;
+  color: #0E1A2B;
+}
+
+:focus-visible {
+  outline: 3px solid #C9A24B;
+  outline-offset: 2px;
+}
