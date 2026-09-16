@@ -82,15 +82,15 @@ function EditarPerfilContenido() {
   // --- Experiencia ---
   function agregarExperiencia() {
     const nueva: Experiencia = { id: uuid(), equipo: "", temporada: "", rol: "" };
-    actualizar("experiencia", [...perfil.experiencia, nueva]);
+    actualizar("experiencia", [...perfil!.experiencia, nueva]);
   }
   function actualizarExperiencia(idx: number, campo: keyof Experiencia, valor: string) {
-    const copia = [...perfil.experiencia];
+    const copia = [...perfil!.experiencia];
     copia[idx] = { ...copia[idx], [campo]: valor };
     actualizar("experiencia", copia);
   }
   function quitarExperiencia(idx: number) {
-    actualizar("experiencia", perfil.experiencia.filter((_, i) => i !== idx));
+    actualizar("experiencia", perfil!.experiencia.filter((_, i) => i !== idx));
   }
 
   const enlacePublico = typeof window !== "undefined" ? `${window.location.origin}/jugadores/${perfil.id}` : "";
@@ -249,8 +249,8 @@ function EditarPerfilContenido() {
             <h2 className="font-display text-2xl">Experiencia</h2>
             <button type="button" onClick={agregarExperiencia} className="text-sm text-turf underline">+ Agregar experiencia</button>
           </div>
-          {perfil.experiencia.length === 0 && <p className="text-sm text-steel">Aún no agregas experiencia.</p>}
-          {perfil.experiencia.map((exp, idx) => (
+          {perfil!.experiencia.length === 0 && <p className="text-sm text-steel">Aún no agregas experiencia.</p>}
+          {perfil!.experiencia.map((exp, idx) => (
             <div key={exp.id} className="border border-black/10 p-4 space-y-3">
               <div className="grid sm:grid-cols-3 gap-3">
                 <Campo label="Equipo" value={exp.equipo} onChange={(v) => actualizarExperiencia(idx, "equipo", v)} />
