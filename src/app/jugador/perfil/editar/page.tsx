@@ -62,7 +62,7 @@ function EditarPerfilContenido() {
     actualizar("estadisticas", copia);
   }
   function quitarEstadistica(idx: number) {
-    actualizar("estadisticas", perfil.estadisticas.filter((_, i) => i !== idx));
+    actualizar("estadisticas", perfil!.estadisticas.filter((_, i) => i !== idx));
   }
 
   // --- Logros ---
